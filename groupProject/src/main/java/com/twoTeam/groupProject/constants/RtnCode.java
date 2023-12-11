@@ -6,18 +6,19 @@ public enum RtnCode {
 	// т200 тぃ404 逞400
 	// 401 403 蛤舦Τ闽
 	SUCCESSFUL(200, "Successful"), // Θ
-	QNPARAM_ERROR(400, "Questionnaire_Param_error"), // 把计岿粇
-	QUPARAM_ERROR(400, "Question_Param_error"), // 把计岿粇
 	NAMEPARAM_ERROR(400, "Name_Param_error"), // 把计岿粇
 	PHONENUMPARAM_ERROR(400, "phone_Param_error"), // 把计岿粇
 	ID_ERROR(400,"Id_error"),//id岿粇
 	ID_NOTFOUNT(404,"ID_Notfount"),//тぃID
-	UPDATE_ERROR(400,"Update_error"),
-	EMAILPARAM_ERROR(400, "email_Param_error"), 
-	QID_ERROR(400, "Question_Id_Param_error"),
-	QNID_ERROR(400, "Questionnaire_Id_Param_error"), 
+	NAME_NOTFOUNT(404,"ID_Notfount"),//тぃID
+	UPDATE_ERROR(400,"Update_error"), 
+	STOREINFOPARM_ERROR(400,"StoreInfo_List_error"),
+	STORENAMEPARM_ERROR(400,"StoreInfo_Name_List_error"),
+	STOREADRESSPARM_ERROR(400,"StoreInfo_Adress_List_error"),
 	LOCATION_CITY_ERROR(400, "Location_City_Param_error"), 
 	DELETE_ERROR(400, "Delete_error"), 
+	STOREINFO_NULL_ERROR(400, "StoreInfo_Param_error"), 
+	STORE_ALREADY_EXISTS(400,"The store already exists"),//把计竒 
 	
 //	ACCOUNT_EXISTED(400,"Account_existed"),//眀腹
 //	ACCOUNT_NOTFOUNT(404,"Account_Notfount"),//тぃ眀腹

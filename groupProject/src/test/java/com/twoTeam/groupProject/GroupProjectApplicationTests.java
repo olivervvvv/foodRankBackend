@@ -1,5 +1,6 @@
 package com.twoTeam.groupProject;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +10,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 
+import com.twoTeam.groupProject.Vo.StoreInfoReq;
+import com.twoTeam.groupProject.Vo.StoreInfoRes;
+import com.twoTeam.groupProject.constants.RtnCode;
 import com.twoTeam.groupProject.entity.StoreInfo;
 import com.twoTeam.groupProject.repository.storeInfoDao;
 
@@ -44,5 +48,27 @@ class GroupProjectApplicationTests {
         }
         System.out.println("============================");
 		System.out.println(storeInfoList);
+	}
+	
+	@Test
+	public StoreInfoRes CreateStoreInfo() {
+			String name="";
+			String address=""; 
+			String locationCity="台中市"; 
+			String foodStyle="韓國料理";
+			LocalDateTime updateTime;
+//		for (StoreInfo storeInfo : req.getStoreInfoList()) {
+//			System.out.println("=============");
+//			System.out.println(storeInfo.getName());
+//			System.out.println("=============");
+//		}
+			return null;
+		
+
+//	        setUpdateTime(LocalDateTime.now());
+
+//	    List<StoreInfo> savedStoreInfoList = storeInfoDao.saveAll(req.getStoreInfoList());
+	    // Return success response
+//	    return new StoreInfoRes(savedStoreInfoList,RtnCode.SUCCESSFUL);
 	}
 }

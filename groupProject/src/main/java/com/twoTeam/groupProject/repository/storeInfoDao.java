@@ -13,4 +13,12 @@ import com.twoTeam.groupProject.entity.StoreInfo;
 public interface storeInfoDao extends JpaRepository<StoreInfo, String>{
 
 	public List<StoreInfo> findByLocationCity(String locationCity);
+
+	public StoreInfo findByAddress(String address);
+	
+	public int save(int storeId);
+
+	public StoreInfo findByName(String name);
+
+	public List<StoreInfo> findAllByName(String name);
 }

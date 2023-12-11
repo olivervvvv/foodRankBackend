@@ -7,13 +7,15 @@ import com.twoTeam.groupProject.entity.StoreInfo;
 
 public class StoreInfoRes {
 
+	private StoreInfo storeInfo;
+	
     private List<StoreInfo> storeInfoList;
 
     private RtnCode rtnCode;
 
-    public StoreInfoRes() {
-        super();
-    }
+//    public StoreInfoRes() {
+//        super();
+//    }
 
     public List<StoreInfo> getStoreInfoList() {
         return storeInfoList;
@@ -23,14 +25,21 @@ public class StoreInfoRes {
         this.storeInfoList = storeInfoList;
     }
 
-    public StoreInfoRes(List<StoreInfo> storeInfoList, RtnCode rtnCode) {
-        super();
-        this.storeInfoList = storeInfoList;
-        this.rtnCode = rtnCode;
-    }
+	public StoreInfoRes(RtnCode rtnCode) {
+		this.rtnCode = rtnCode;
+	}
 
-	public StoreInfoRes(RtnCode locationCityError) {
-		// TODO Auto-generated constructor stub
+	
+	public StoreInfoRes(StoreInfo storeInfo, RtnCode rtnCode) {
+		super();
+		this.storeInfo = storeInfo;
+		this.rtnCode = rtnCode;
+	}
+
+	public StoreInfoRes(List<StoreInfo> storeInfoList, RtnCode rtnCode) {
+		super();
+		this.storeInfoList = storeInfoList;
+		this.rtnCode = rtnCode;
 	}
 
 	public RtnCode getRtnCode() {
@@ -40,4 +49,17 @@ public class StoreInfoRes {
     public void setRtnCode(RtnCode rtnCode) {
         this.rtnCode = rtnCode;
     }
+
+	public boolean isSuccess() {
+        return rtnCode != null && rtnCode.equals(RtnCode.SUCCESSFUL);
+	}
+
+	public StoreInfo getStoreInfo() {
+		return storeInfo;
+	}
+
+	public void setStoreInfo(StoreInfo storeInfo) {
+		this.storeInfo = storeInfo;
+	}
+	
 }
