@@ -1,6 +1,7 @@
 package com.twoTeam.groupProject.controller;
 
 import com.twoTeam.groupProject.Service.ifs.UserService;
+import com.twoTeam.groupProject.dto.UserLoginRequest;
 import com.twoTeam.groupProject.dto.UserRegisterRequest;
 import com.twoTeam.groupProject.entity.UsersEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,10 @@ public class UserController {
         UsersEntity usersEntity = userService.register(userRegisterRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(usersEntity);
     }
+//    @PostMapping("/users/login")
+//    public ResponseEntity<UsersEntity> login(@RequestBody @Valid UserLoginRequest userLoginRequest) {
+//        UsersEntity usersEntity = userService.login(userLoginRequest);
+//        return ResponseEntity.status(HttpStatus.CREATED).body(usersEntity);
+//    }
 
 }
