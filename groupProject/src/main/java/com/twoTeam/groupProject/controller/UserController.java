@@ -55,8 +55,11 @@ public class UserController {
     /*
     *原本預計把 url 設計為 "/users/{email}/comments"，代表者某個特定用戶的留言功能
     *但如此設計的話會喪失 RESTful API 對於資源的定義，因此改 currentUser 代替，看來應該是比較合理的
-    * Bing AI 建議的
-    * */
+    * Bing AI 建議的。
+    * 此方法為測試用方法，預計只要是需登入才能使用的功能，url就設計為 /users/**，再透過UserInterceptor去判斷是否登入
+    * 對於權限的驗證也是從session裡 get role 出來做驗證
+     */
+
     @GetMapping(value = "/users/currentUser/comments123")
     public ResponseEntity<?> comments123(HttpSession session) {
         String email = (String) session.getAttribute("email");
