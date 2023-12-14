@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void login(UserLoginRequest userLoginRequest, HttpSession session) {
+    public UserRoles login(UserLoginRequest userLoginRequest, HttpSession session) {
         UsersEntity userEntity = userDao.findUsersEntitiesByEmail(userLoginRequest.getEmail());
         if (userEntity == null) {
             log.warn("此信箱並不存在:{}", userLoginRequest.getEmail());
@@ -52,5 +52,6 @@ public class UserServiceImpl implements UserService {
         session.setAttribute("email", userEntity.getEmail());
         session.setAttribute("role", userEntity.getRole());
         log.info("登入成功, 執行 session 設定, email:{}, role:{}", session.getAttribute("email"), session.getAttribute("role"));
+        return userEntity.getRole();
     }
 }
