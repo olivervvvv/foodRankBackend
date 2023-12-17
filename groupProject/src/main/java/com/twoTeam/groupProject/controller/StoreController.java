@@ -24,12 +24,14 @@ public class StoreController {
 	@Autowired
 	private foodMapService foodMapService;
 	
+	//搜索都市店家
 	 @GetMapping(value = "/foodMap/getlocation")
 	    public StoreInfoRes getLocationCity(@RequestParam String locationCity) {
 	        System.out.println(locationCity);
 	        return foodMapService.SearchLocation(locationCity);
 	    }
 	 
+	 //創建店家
 	 @PostMapping("/foodMap/create")
 	    public StoreInfoRes createStoreInfo(@RequestBody StoreInfoReq req) {
 	        // Call your service method to handle the creation logic
@@ -43,9 +45,19 @@ public class StoreController {
 	         
 	    }
 
+	 //搜索店名
 	 @GetMapping(value = "/foodMap/searchName")
 	    public StoreInfoRes SearchStoreName(@RequestParam String name) {
 	        System.out.println(name);
 	        return foodMapService.SearchStoreName(name);
+	    }
+	 
+	 //按讚店家+連鎖增加時間店家好感度
+	 @GetMapping("/foodMap/addStoreLike")
+	    public StoreInfoRes addStoreLike(@RequestParam int storeId,
+	    		@RequestParam String name
+	    		) {
+	        System.out.println(storeId);
+	        return foodMapService.addStoreLike(storeId,name);
 	    }
 }

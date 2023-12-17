@@ -13,7 +13,10 @@ import org.springframework.test.annotation.Rollback;
 import com.twoTeam.groupProject.Vo.StoreInfoReq;
 import com.twoTeam.groupProject.Vo.StoreInfoRes;
 import com.twoTeam.groupProject.constants.RtnCode;
+import com.twoTeam.groupProject.constants.UserRoles;
 import com.twoTeam.groupProject.entity.StoreInfo;
+import com.twoTeam.groupProject.entity.UsersEntity;
+import com.twoTeam.groupProject.repository.UserDao;
 import com.twoTeam.groupProject.repository.storeInfoDao;
 
 @SpringBootTest
@@ -21,6 +24,9 @@ class GroupProjectApplicationTests {
 
 	@Autowired
 	private storeInfoDao storeInfoDao;
+	
+	@Autowired
+	private UserDao userDao;
 	
 	@Test
 	void contextLoads() {
@@ -70,5 +76,16 @@ class GroupProjectApplicationTests {
 //	    List<StoreInfo> savedStoreInfoList = storeInfoDao.saveAll(req.getStoreInfoList());
 	    // Return success response
 //	    return new StoreInfoRes(savedStoreInfoList,RtnCode.SUCCESSFUL);
+	}
+	
+	@Test
+	public void createuser() {
+		UsersEntity usersEntity = new UsersEntity();
+        usersEntity.setEmail("djdj@kimo.com");
+        usersEntity.setName("測試人員一");
+        usersEntity.setPassword("dsd");
+//        usersEntity.setRole(UserRoles.NORMAL);
+        userDao.save(usersEntity);
+		
 	}
 }

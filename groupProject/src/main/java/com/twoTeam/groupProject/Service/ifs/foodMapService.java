@@ -10,4 +10,8 @@ public interface foodMapService {
 	public StoreInfoRes CreateStoreInfo(StoreInfoReq req);
 
 	StoreInfoRes SearchStoreName(String name);
+	
+	public StoreInfoRes SearchStoreId(String name);
+
+	public StoreInfoRes addStoreLike(int storeId, String name);
 }

@@ -2,46 +2,47 @@ package com.twoTeam.groupProject.constants;
 
 public enum RtnCode {
 
-	// ¦CÁ| 200 400 401 403 404
-	// §äªº¨ì200 §ä¤£¨ì404 ³Ñ¤U400
-	// 401 403 ¸òÅv­­¦³Ãö
-	SUCCESSFUL(200, "Successful"), // ¦¨¥\
-	NAMEPARAM_ERROR(400, "Name_Param_error"), // °Ñ¼Æ¿ù»~
-	PHONENUMPARAM_ERROR(400, "phone_Param_error"), // °Ñ¼Æ¿ù»~
-	ID_ERROR(400,"Id_error"),//id¿ù»~
-	ID_NOTFOUNT(404,"ID_Notfount"),//§ä¤£¨ìID
-	NAME_NOTFOUNT(404,"ID_Notfount"),//§ä¤£¨ìID
-	UPDATE_ERROR(400,"Update_error"), 
-	STOREINFOPARM_ERROR(400,"StoreInfo_List_error"),
-	STORENAMEPARM_ERROR(400,"StoreInfo_Name_List_error"),
-	STOREADRESSPARM_ERROR(400,"StoreInfo_Adress_List_error"),
-	LOCATION_CITY_ERROR(400, "Location_City_Param_error"), 
-	DELETE_ERROR(400, "Delete_error"), 
-	STOREINFO_NULL_ERROR(400, "StoreInfo_Param_error"), 
-	STORE_ALREADY_EXISTS(400,"The store already exists"),//°Ñ¼Æ¤w¸g¦s¦b 
-	
-//	ACCOUNT_EXISTED(400,"Account_existed"),//±b¸¹¤w¦s¦b
-//	ACCOUNT_NOTFOUNT(404,"Account_Notfount"),//§ä¤£¨ì±b¸¹
-//	BALANCE_IS_INSUFFICIENT(400,"Balance is insufficient"),//¾lÃB¤£¨¬ 
-	;
+    // ï¿½Cï¿½| 200 400 401 403 404
+    // ï¿½äªºï¿½ï¿½200 ï¿½ä¤£ï¿½ï¿½404 ï¿½Ñ¤U400
+    // 401 403 ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    SUCCESSFUL(200, "Successful"), // ï¿½ï¿½ï¿½\
+    NAMEPARAM_ERROR(400, "Name_Param_error"), // ï¿½Ñ¼Æ¿ï¿½ï¿½~
+    PHONENUMPARAM_ERROR(400, "phone_Param_error"), // ï¿½Ñ¼Æ¿ï¿½ï¿½~
+    ID_ERROR(400,"Id_error"),//idï¿½ï¿½ï¿½~
+    ID_NOTFOUNT(404,"ID_Notfount"),//ï¿½ä¤£ï¿½ï¿½ID
+    NAME_NOTFOUNT(404,"ID_Notfount"),//ï¿½ä¤£ï¿½ï¿½ID
+    UPDATE_ERROR(400,"Update_error"),
+    STOREINFOPARM_ERROR(400,"StoreInfo_List_error"),
+    STORENAMEPARM_ERROR(400,"StoreInfo_Name_List_error"),
+    STOREADRESSPARM_ERROR(400,"StoreInfo_Adress_List_error"),
+    LOCATION_CITY_ERROR(400, "Location_City_Param_error"),
+    DELETE_ERROR(400, "Delete_error"),
+    STOREINFO_NULL_ERROR(400, "StoreInfo_Param_error"),
+    STORE_ALREADY_EXISTS(400,"The store already exists"), 
+    POST_ID_NOT_FOUND(400,"Post_idnot_found"), //ï¿½Ñ¼Æ¤wï¿½gï¿½sï¿½b
 
-	private int code;
+//	ACCOUNT_EXISTED(400,"Account_existed"),//ï¿½bï¿½ï¿½ï¿½wï¿½sï¿½b
+//	ACCOUNT_NOTFOUNT(404,"Account_Notfount"),//ï¿½ä¤£ï¿½ï¿½bï¿½ï¿½
+//	BALANCE_IS_INSUFFICIENT(400,"Balance is insufficient"),//ï¿½lï¿½Bï¿½ï¿½ï¿½ï¿½
+    ;
 
-	private String message;
+    private int code;
 
-	// source -->
-	private RtnCode(int code, String message) {
-		this.code = code;
-		this.message = message;
-	}
+    private String message;
 
-	// ¥u¦³¥Î¨ìgetter
-	public int getCode() {
-		return code;
-	}
+    // source -->
+    private RtnCode(int code, String message) {
+        this.code = code;
+        this.message = message;
+    }
 
-	public String getMessage() {
-		return message;
-	}
+    // ï¿½uï¿½ï¿½ï¿½Î¨ï¿½getter
+    public int getCode() {
+        return code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 
 }

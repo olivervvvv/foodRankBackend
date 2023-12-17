@@ -10,51 +10,58 @@ import javax.persistence.Id;
 //import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "store_info")
 public class StoreInfo{
 
-	//¬y¤ô¸¹
+	//å•†åº—æµæ°´è™Ÿ
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name = "store_id")
 	private int storeId;
-	
-	//¦a§}
+
+	//åœ°å€
 	@Column(name = "address")
 	private String address;
-	
-	//©±®a¦WºÙ
+
+	//åº—å
 	@Column(name = "name")
 	private String name;
 
-	//¦~±Æ¦æº]
+	//æœˆæ’å
 	@Column(name = "ranking_Ynumber")
 	private int rankingYearNumber;
-	
-	//¤ë±Æ¦æº]
+
+	//å¹´æ’å
 	@Column(name = "ranking_Mnumber")
 	private int rankingMonthNumber;
-	
-	//¦ì¸m«°¥«
+
+	//æ‰€åœ¨éƒ½å¸‚
 	@Column(name = "location_city")
 	private String locationCity;
 
-	//­¹ª«ºØÃş
+	//é£Ÿç‰©é¢¨æ ¼
 	@Column(name = "food_style")
 	private String foodStyle;
+
+	//æŒ‰è®šæ•¸
+	@Column(name = "user_like")
+	private double userLike;
 	
-	//¤W¶Ç®É¶¡
+	//ä¸Šå‚³æ™‚é–“
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") // æŒ‡å®šæ—¥æœŸæ™‚é–“çš„æ ¼å¼
 	@Column(name = "update_time")
 	private LocalDateTime updateTime;
-	
+
 	public StoreInfo() {
 		super();
 //		this.updateTime = LocalDateTime.now();
 	}
 
 	public StoreInfo(int storeId, String address, String name, int rankingYearNumber, int rankingMonthNumber,
-			String locationCity, String foodStyle, LocalDateTime updateTime) {
+					 String locationCity, String foodStyle, LocalDateTime updateTime, double userLike) {
 		super();
 		this.storeId = storeId;
 		this.address = address;
@@ -64,6 +71,7 @@ public class StoreInfo{
 		this.locationCity = locationCity;
 		this.foodStyle = foodStyle;
 		this.updateTime = updateTime != null ? updateTime : LocalDateTime.now();
+		this.userLike = userLike;
 	}
 
 	public String getAddress() {
@@ -129,5 +137,13 @@ public class StoreInfo{
 	public void setUpdateTime(LocalDateTime updateTime) {
 		this.updateTime = updateTime;
 	}
-	
+
+	public double getUserLike() {
+		return userLike;
+	}
+
+	public void setUserLike(double userLike) {
+		this.userLike = userLike;
+	}
+
 }
