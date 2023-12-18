@@ -1,5 +1,7 @@
 package com.twoTeam.groupProject.entity;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "post_info")
@@ -32,24 +36,34 @@ public class PostInfo {
 	@Column(name = "post_like_number")
 	private int postLikeNumber;
 	
-	@Lob 
-	@Basic(fetch = FetchType.LAZY)
-	@Column(length=100000)
-	private byte[] picture;
+	@Column(name = "file_path")
+	private String filePath;
+	
+//	@Lob 
+//	@Basic(fetch = FetchType.LAZY)
+//	@Column(length=100000)
+//	private byte[] picture;
+	
+	//上傳時間
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") // 指定日期時間的格式
+	@Column(name = "post_updatetime")
+	private LocalDateTime postUpdateTime;
 
 	public PostInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public PostInfo(int postId, int storeId, int userId, String description, int postLikeNumber, byte[] picture) {
+//byte[] picture,
+	public PostInfo(int postId, int storeId, int userId, String description, int postLikeNumber, String filePath, LocalDateTime postUpdateTime) {
 		super();
 		this.postId = postId;
 		this.storeId = storeId;
 		this.userId = userId;
 		this.description = description;
 		this.postLikeNumber = postLikeNumber;
-		this.picture = picture;
+		this.filePath = filePath;
+//		this.picture = picture;
+		this.postUpdateTime = postUpdateTime;
 	}
 
 	public int getPostId() {
@@ -92,17 +106,32 @@ public class PostInfo {
 		this.postLikeNumber = postLikeNumber;
 	}
 
-	public byte[] getPicture() {
-		return picture;
+//	public byte[] getPicture() {
+//		return picture;
+//	}
+//
+//	public void setPicture(byte[] picture) {
+//		this.picture = picture;
+//	}
+
+	public LocalDateTime getPostUpdateTime() {
+		return postUpdateTime;
 	}
 
-	public void setPicture(byte[] picture) {
-		this.picture = picture;
+	public void setPostUpdateTime(LocalDateTime postUpdateTime) {
+		this.postUpdateTime = postUpdateTime;
 	}
 
 	public boolean isPresent() {
 		
 		return false;
+	}
+	
+	public String getFilePath() {
+		return filePath;
+	}
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
 	}
 	
 	
