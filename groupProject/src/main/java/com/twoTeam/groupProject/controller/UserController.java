@@ -2,9 +2,11 @@ package com.twoTeam.groupProject.controller;
 
 import com.twoTeam.groupProject.Service.ifs.UserService;
 import com.twoTeam.groupProject.constants.UserRoles;
+import com.twoTeam.groupProject.dto.UserComementRequest;
 import com.twoTeam.groupProject.dto.UserLoginRequest;
 import com.twoTeam.groupProject.dto.UserRegisterRequest;
 import com.twoTeam.groupProject.entity.UsersEntity;
+import com.twoTeam.groupProject.repository.UserDao;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +34,9 @@ public class UserController {
     @PostMapping(value = "/users/login")
     @ApiOperation(value = "登入")
     public ResponseEntity<String> login(@RequestBody @Valid UserLoginRequest userLoginRequest,
-                                   HttpSession session) {
+                                        HttpSession session) {
         log.info("login 測試用, sessionId:{}", session.getId());
-        UserRoles userRoles = userService.login(userLoginRequest, session);
+        UsersEntity userEntity = userService.login(userLoginRequest, session);
         // 暫時先不 return role 給前端，還沒想到實際用途或符合的設計
         return ResponseEntity.status(HttpStatus.OK).build();
     }
@@ -53,17 +55,20 @@ public class UserController {
 
 
     /*
-    *原本預計把 url 設計為 "/users/{email}/comments"，代表者某個特定用戶的留言功能
-    *但如此設計的話會喪失 RESTful API 對於資源的定義，因此改 currentUser 代替，看來應該是比較合理的
-    * Bing AI 建議的。
-    * 此方法為測試用方法，預計只要是需登入才能使用的功能，url就設計為 /users/**，再透過UserInterceptor去判斷是否登入
-    * 對於權限的驗證也是從session裡 get role 出來做驗證
+     *原本預計把 url 設計為 "/users/{email}/comments"，代表者某個特定用戶的留言功能
+     *但如此設計的話會喪失 RESTful API 對於資源的定義，因此改 currentUser 代替，看來應該是比較合理的
+     * Bing AI 建議的。
      */
-
-    @GetMapping(value = "/users/currentUser/comments123")
-    public ResponseEntity<?> comments123(HttpSession session) {
-        String email = (String) session.getAttribute("email");
-        log.info("comments123 API 執行, email:{}", email);
+    // 留言功能，帳號從 session 拿，所以這裡傳遞的 parameter 只有 留言內容(comment) 而已
+    @PostMapping(value = "/users/currentUser/comment")
+    @ApiOperation(value = "留言功能", notes = " 需要登入才能使用，否則會 return 401 ")
+    public ResponseEntity<?> comment(HttpSession session,
+                                     @RequestBody @Valid UserComementRequest userComementRequest
+    ) {
+        String email = session.getAttribute("email").toString();
+        String name = session.getAttribute("name").toString();
+        log.info("目前登入的 email:{}, name:{}", email, name);
+        userService.createComment(name, userComementRequest);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 

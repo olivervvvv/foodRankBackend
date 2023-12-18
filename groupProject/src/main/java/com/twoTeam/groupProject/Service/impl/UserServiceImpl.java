@@ -2,10 +2,13 @@ package com.twoTeam.groupProject.Service.impl;
 
 import com.twoTeam.groupProject.Service.ifs.UserService;
 import com.twoTeam.groupProject.constants.UserRoles;
+import com.twoTeam.groupProject.dto.UserComementRequest;
 import com.twoTeam.groupProject.dto.UserLoginRequest;
 import com.twoTeam.groupProject.dto.UserRegisterRequest;
+import com.twoTeam.groupProject.entity.PostCommentEntity;
 import com.twoTeam.groupProject.entity.UsersEntity;
 import com.twoTeam.groupProject.exceptions.UserValidationException;
+import com.twoTeam.groupProject.repository.PostCommentDao;
 import com.twoTeam.groupProject.repository.UserDao;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +23,8 @@ import javax.servlet.http.HttpSession;
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private PostCommentDao postCommentDao;
     @Override
     public UsersEntity register(UserRegisterRequest request) {
         if (userDao.findUsersEntitiesByEmail(request.getEmail()) != null) {
@@ -35,7 +40,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserRoles login(UserLoginRequest userLoginRequest, HttpSession session) {
+    public UsersEntity login(UserLoginRequest userLoginRequest, HttpSession session) {
         UsersEntity userEntity = userDao.findUsersEntitiesByEmail(userLoginRequest.getEmail());
         if (userEntity == null) {
             log.warn("此信箱並不存在:{}", userLoginRequest.getEmail());
@@ -51,7 +56,18 @@ public class UserServiceImpl implements UserService {
         }
         session.setAttribute("email", userEntity.getEmail());
         session.setAttribute("role", userEntity.getRole());
+        session.setAttribute("name", userEntity.getName());
         log.info("登入成功, 執行 session 設定, email:{}, role:{}", session.getAttribute("email"), session.getAttribute("role"));
-        return userEntity.getRole();
+        return userEntity;
+    }
+
+    @Override
+    public void createComment(String name, UserComementRequest userComementRequest) {
+        PostCommentEntity postCommentEntity = new PostCommentEntity();
+        postCommentEntity.setPostId(userComementRequest.getPostId());
+        postCommentEntity.setName(name);
+        postCommentEntity.setComment(userComementRequest.getComment());
+        postCommentEntity.setStoreId(userComementRequest.getStoreId());
+        postCommentDao.save(postCommentEntity);
     }
 }

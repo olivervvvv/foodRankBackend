@@ -16,8 +16,10 @@ repositories {
 }
 
 dependencies {
+	implementation 'com.sun.mail:javax.mail:1.6.2'
 	compileOnly 'org.projectlombok:lombok:1.18.22'
 	annotationProcessor 'org.projectlombok:lombok:1.18.22'
+	implementation 'org.projectlombok:lombok:1.18.22'
 	implementation 'io.springfox:springfox-boot-starter:3.0.0'
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

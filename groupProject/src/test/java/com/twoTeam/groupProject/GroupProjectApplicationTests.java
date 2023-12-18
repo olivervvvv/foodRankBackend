@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
+import com.twoTeam.groupProject.mail.Mail;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -70,5 +71,11 @@ class GroupProjectApplicationTests {
 //	    List<StoreInfo> savedStoreInfoList = storeInfoDao.saveAll(req.getStoreInfoList());
 	    // Return success response
 //	    return new StoreInfoRes(savedStoreInfoList,RtnCode.SUCCESSFUL);
+	}
+
+	@Test
+	public void MailTest() {
+		Mail mail = new Mail();
+		mail.sentSignUpMail();
 	}
 }

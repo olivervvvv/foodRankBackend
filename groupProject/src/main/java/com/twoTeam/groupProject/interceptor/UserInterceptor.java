@@ -1,12 +1,10 @@
 package com.twoTeam.groupProject.interceptor;
 
-import com.twoTeam.groupProject.constants.UserRoles;
-import com.twoTeam.groupProject.exceptions.UserIdentityException;
-import com.twoTeam.groupProject.exceptions.UserValidationException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +25,7 @@ public class UserInterceptor implements HandlerInterceptor {
 
         HttpSession session = request.getSession();
         if (session.getAttribute("email") == null) {
-            throw new UserIdentityException("您尚未登入");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "尚未登入");
         }
 
         log.info("測試用, sessionId:{}", session.getId());
