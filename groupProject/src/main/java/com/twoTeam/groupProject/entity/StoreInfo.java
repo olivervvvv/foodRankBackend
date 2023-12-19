@@ -22,11 +22,19 @@ public class StoreInfo{
 	@Column(name = "store_id")
 	private int storeId;
 
+<<<<<<< HEAD
 	//åœ°å€
 	@Column(name = "address")
 	private String address;
 
 	//åº—å
+=======
+	//¦a§}
+	@Column(name = "address")
+	private String address;
+
+	//©±®a¦WºÙ
+>>>>>>> origin/main
 	@Column(name = "name")
 	private String name;
 
@@ -34,11 +42,19 @@ public class StoreInfo{
 	@Column(name = "ranking_Ynumber")
 	private int rankingYearNumber;
 
+<<<<<<< HEAD
 	//å¹´æŽ’å
 	@Column(name = "ranking_Mnumber")
 	private int rankingMonthNumber;
 
 	//æ‰€åœ¨éƒ½å¸‚
+=======
+	//¤ë±Æ¦æº]
+	@Column(name = "ranking_Mnumber")
+	private int rankingMonthNumber;
+
+	//¦ì¸m«°¥«
+>>>>>>> origin/main
 	@Column(name = "location_city")
 	private String locationCity;
 
@@ -46,12 +62,16 @@ public class StoreInfo{
 	@Column(name = "food_style")
 	private String foodStyle;
 
+<<<<<<< HEAD
 	//æŒ‰è®šæ•¸
 	@Column(name = "user_like")
 	private double userLike;
 	
 	//ä¸Šå‚³æ™‚é–“
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss") // æŒ‡å®šæ—¥æœŸæ™‚é–“çš„æ ¼å¼
+=======
+	//¤W¶Ç®É¶¡
+>>>>>>> origin/main
 	@Column(name = "update_time")
 	private LocalDateTime updateTime;
 
@@ -61,7 +81,11 @@ public class StoreInfo{
 	}
 
 	public StoreInfo(int storeId, String address, String name, int rankingYearNumber, int rankingMonthNumber,
+<<<<<<< HEAD
 					 String locationCity, String foodStyle, LocalDateTime updateTime, double userLike) {
+=======
+					 String locationCity, String foodStyle, LocalDateTime updateTime) {
+>>>>>>> origin/main
 		super();
 		this.storeId = storeId;
 		this.address = address;
@@ -138,6 +162,7 @@ public class StoreInfo{
 		this.updateTime = updateTime;
 	}
 
+<<<<<<< HEAD
 	public double getUserLike() {
 		return userLike;
 	}
@@ -146,4 +171,6 @@ public class StoreInfo{
 		this.userLike = userLike;
 	}
 
+=======
+>>>>>>> origin/main
 }
