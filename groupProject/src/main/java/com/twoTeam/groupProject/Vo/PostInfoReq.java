@@ -9,6 +9,7 @@ public class PostInfoReq {
 
 	private int storeId;
     private int userId;
+    private String postTitle;
     private String description;
     private MultipartFile picture;
 	
@@ -19,10 +20,11 @@ public class PostInfoReq {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PostInfoReq(int storeId, int userId, String description, MultipartFile picture, RtnCode rtnCode) {
+	public PostInfoReq(int storeId, int userId, String description, String postTitle, MultipartFile picture, RtnCode rtnCode) {
 		super();
 		this.storeId = storeId;
 		this.userId = userId;
+		this.postTitle = postTitle;
 		this.description = description;
 		this.picture = picture;
 		this.rtnCode = rtnCode;
@@ -42,6 +44,14 @@ public class PostInfoReq {
 
 	public void setUserId(int userId) {
 		this.userId = userId;
+	}
+
+	public String getPostTitle() {
+		return postTitle;
+	}
+
+	public void setPostTitle(String postTitle) {
+		this.postTitle = postTitle;
 	}
 
 	public String getDescription() {

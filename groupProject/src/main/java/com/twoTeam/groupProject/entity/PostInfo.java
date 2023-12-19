@@ -30,6 +30,9 @@ public class PostInfo {
 	@Column(name = "user_id")
 	private int userId;
 	
+	@Column(name = "post_title")
+	private String postTitle;
+	
 	@Column(name = "description")
 	private String description;
 	
@@ -54,11 +57,12 @@ public class PostInfo {
 		// TODO Auto-generated constructor stub
 	}
 //byte[] picture,
-	public PostInfo(int postId, int storeId, int userId, String description, int postLikeNumber, String filePath, LocalDateTime postUpdateTime) {
+	public PostInfo(int postId, int storeId, int userId, String postTitle, String description, int postLikeNumber, String filePath, LocalDateTime postUpdateTime) {
 		super();
 		this.postId = postId;
 		this.storeId = storeId;
 		this.userId = userId;
+		this.postTitle = postTitle;
 		this.description = description;
 		this.postLikeNumber = postLikeNumber;
 		this.filePath = filePath;
@@ -90,6 +94,12 @@ public class PostInfo {
 		this.userId = userId;
 	}
 
+	public String getPostTitle() {
+		return postTitle;
+	}
+	public void setPostTitle(String postTitle) {
+		this.postTitle = postTitle;
+	}
 	public String getDescription() {
 		return description;
 	}

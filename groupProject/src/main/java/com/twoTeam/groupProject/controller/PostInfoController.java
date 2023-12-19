@@ -40,11 +40,6 @@ public class PostInfoController {
 	        	return new ResponseEntity<>(new PostInfoRes("Error creating post: " + e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
 	        }
 	    }
-	    //獲取貼文
-	    @GetMapping("/getPhoto")
-	    public PostInfoRes getPost(@RequestParam int postId) {
-	    	return postInfoService.getImageData(postId);
-	    }
 	    
 	    //獲取貼文
 	    @GetMapping("/getPost")

@@ -50,6 +50,7 @@ public class PostInfoServiceImpl implements PostInfoService{
             PostInfo postInfo = new PostInfo();
             postInfo.setStoreId(req.getStoreId());
             postInfo.setUserId(req.getUserId());
+            postInfo.setPostTitle(req.getPostTitle());
             postInfo.setDescription(req.getDescription());
 //            postInfo.setPicture(pictureData);
             postInfo.setFilePath(filePath);
