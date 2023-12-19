@@ -19,6 +19,7 @@ import javax.validation.Valid;
 
 @RestController
 @Slf4j
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class UserController {
     @Autowired
     private UserService userService;
